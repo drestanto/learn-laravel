@@ -24,6 +24,10 @@ Route::get('link/{id}', 'LinkController@showLink');
 Route::get('links', 'LinkController@showAllLinks');
 Route::get('link2/{id}', 'LinkController@showLink');
 Route::get('links2', 'LinkController@showAllLinks2');
+Route::get('search', function () {
+	return view('fitur.search');
+});
+Route::get('search', 'LinkController@search');
 
 //Create
 Route::get('/create', function () {
