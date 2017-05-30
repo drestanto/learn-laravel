@@ -24,10 +24,6 @@ Route::get('link/{id}', 'LinkController@showLink');
 Route::get('links', 'LinkController@showAllLinks');
 Route::get('link2/{id}', 'LinkController@showLink');
 Route::get('links2', 'LinkController@showAllLinks2');
-Route::get('search', function () {
-	return view('fitur.search');
-});
-Route::get('search', 'LinkController@search');
 
 //Create
 Route::get('/create', function () {
@@ -42,5 +38,13 @@ Route::post('/edit/{id}', 'LinkController@editLink2');
 //Delete
 Route::get('/delete/{id}', 'LinkController@startDeleteLink');
 Route::post('/delete/{id}', 'LinkController@deleteLink2');
+
+//Search
+Route::get('search', function () {
+	return view('fitur.search');
+});
+Route::post('/searchsubmit', 'LinkController@startSearch');
+Route::get('search/{keyword}', 'LinkController@search');
+
 
 Auth::routes();

@@ -153,4 +153,19 @@ class LinkController extends Controller
         return redirect('/links');
     }
 
+    //SEARCH
+    public function startSearch(Request $request)
+    {
+        //return $request->key;
+        
+        return redirect('/search/' . $request->key);
+    }
+    public function search($keyword)
+    {
+        //return "Hello";
+        $quer = "SELECT * FROM links WHERE title LIKE '%" . $keyword . "%' OR url like '%" . $keyword . "%' OR description like '%" . $keyword . "%'" ;
+        $links = DB::select($quer);
+
+        return view('fitur.search',compact('links', 'keyword'));
+    }
 }
