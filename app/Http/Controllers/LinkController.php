@@ -124,6 +124,7 @@ class LinkController extends Controller
                 ->withErrors($validator);
         }
         $numAffected = DB::update('update links set title = ?, url = ?, description = ? where id = ?', [$request->title,$request->url,$request->description, $id]);
+        //return $numAffected;
         
         return redirect('/links');
     }
@@ -139,21 +140,15 @@ class LinkController extends Controller
     }
     public function deleteLink(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:100',
-            'url' => 'required|max:255',
-            'description' => 'required|max:100',
-        ]);
-        if ($validator->fails()) {
-            return back()
-                ->withInput()
-                ->withErrors($validator);
-        }
         $link = \App\Link::find($id);
-        $link->title = $request->title;
-        $link->url = $request->url;
-        $link->description = $request->description;
-        $link->save();
+        $link->delete();
+
+        return redirect('/links');
+    }
+    public function deleteLink2(Request $request, $id)
+    {
+        $numDeleted = DB::delete('delete from links where id = ?', [$id]);
+        //return $numDeleted;
 
         return redirect('/links');
     }

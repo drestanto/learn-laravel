@@ -19,7 +19,7 @@ Route::get('home', function () {
     return view('welcome');
 });
 
-//Rertieve
+//Retrieve
 Route::get('link/{id}', 'LinkController@showLink');
 Route::get('links', 'LinkController@showAllLinks');
 Route::get('link2/{id}', 'LinkController@showLink');
@@ -37,6 +37,6 @@ Route::post('/edit/{id}', 'LinkController@editLink2');
 
 //Delete
 Route::get('/delete/{id}', 'LinkController@startDeleteLink');
-Route::post('/delete/{id}', 'LinkController@deleteLink');
+Route::post('/delete/{id}', 'LinkController@deleteLink2');
 
 Auth::routes();
