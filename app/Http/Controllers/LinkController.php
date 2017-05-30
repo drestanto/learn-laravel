@@ -77,7 +77,7 @@ class LinkController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        DB::insert('insert into links (title, url, description) values (?,?,?)',[$request->title,$request->url,$request->description]);
+        DB::insert('insert into links (title, url, description, created_at, updated_at) values (?,?,?,now(),now())',[$request->title,$request->url,$request->description]);
         return redirect('/links');
     }
 
@@ -123,7 +123,7 @@ class LinkController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        $numAffected = DB::update('update links set title = ?, url = ?, description = ? where id = ?', [$request->title,$request->url,$request->description, $id]);
+        $numAffected = DB::update('update links set title = ?, url = ?, description = ?, updated_at=now() where id = ?', [$request->title,$request->url,$request->description, $id]);
         //return $numAffected;
         
         return redirect('/links');
