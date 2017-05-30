@@ -130,4 +130,32 @@ class LinkController extends Controller
     
 
     //DELETE
+    public function startDeleteLink($id)
+    {
+        $link = \App\Link::findOrFail($id);
+        //return $link;
+
+        return view('deletelink',compact('link'));
+    }
+    public function deleteLink(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:100',
+            'url' => 'required|max:255',
+            'description' => 'required|max:100',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $link = \App\Link::find($id);
+        $link->title = $request->title;
+        $link->url = $request->url;
+        $link->description = $request->description;
+        $link->save();
+
+        return redirect('/links');
+    }
+
 }
