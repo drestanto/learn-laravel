@@ -27,7 +27,7 @@ Route::get('links2', 'LinkController@showAllLinks2');
 
 //Create
 Route::get('/create', function () {
-    return view('create');
+    return view('crud.create');
 });
 Route::post('/submit', 'LinkController@saveLink2');
 

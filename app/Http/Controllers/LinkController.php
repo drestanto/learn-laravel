@@ -15,7 +15,7 @@ class LinkController extends Controller
     	//return $link;
 
 
-        return view('onelink',compact('link'));
+        return view('crud.onelink',compact('link'));
     }
     public function showAllLinks()
     {
@@ -32,7 +32,7 @@ class LinkController extends Controller
         //return $link;
 
 
-        return view('onelink',compact('link'));
+        return view('crud.onelink',compact('link'));
     }
     public function showAllLinks2()
     {
@@ -88,7 +88,7 @@ class LinkController extends Controller
     	$link = \App\Link::findOrFail($id);
     	//return $link;
 
-        return view('editlink',compact('link'));
+        return view('crud.editlink',compact('link'));
     }
     public function editLink(Request $request, $id)
     {
@@ -136,7 +136,7 @@ class LinkController extends Controller
         $link = \App\Link::findOrFail($id);
         //return $link;
 
-        return view('deletelink',compact('link'));
+        return view('crud.deletelink',compact('link'));
     }
     public function deleteLink(Request $request, $id)
     {
