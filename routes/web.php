@@ -32,10 +32,18 @@ Route::get('/create', function () {
 Route::post('/submit', 'LinkController@saveLink2');
 
 //Update
+Route::get('edit', function () {
+	return view('crud.edit');
+});
+Route::post('/editsubmit', 'LinkController@startEdit');
 Route::get('/edit/{id}', 'LinkController@startEditLink');
 Route::post('/edit/{id}', 'LinkController@editLink2');
 
 //Delete
+Route::get('delete', function () {
+	return view('crud.delete');
+});
+Route::post('/deletesubmit', 'LinkController@startDelete');
 Route::get('/delete/{id}', 'LinkController@startDeleteLink');
 Route::post('/delete/{id}', 'LinkController@deleteLink2');
 

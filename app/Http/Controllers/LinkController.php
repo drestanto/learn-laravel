@@ -50,7 +50,7 @@ class LinkController extends Controller
     	$validator = Validator::make($request->all(), [
 	        'title' => 'required|max:100',
 	        'url' => 'required|max:255',
-	        'description' => 'required|max:100',
+	        'description' => 'required|max:255',
 	    ]);
 	    if ($validator->fails()) {
 	        return back()
@@ -70,7 +70,7 @@ class LinkController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:100',
             'url' => 'required|max:255',
-            'description' => 'required|max:100',
+            'description' => 'required|max:255',
         ]);
         if ($validator->fails()) {
             return back()
@@ -95,7 +95,7 @@ class LinkController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:100',
             'url' => 'required|max:255',
-            'description' => 'required|max:100',
+            'description' => 'required|max:255',
         ]);
         if ($validator->fails()) {
             return back()
@@ -116,7 +116,7 @@ class LinkController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:100',
             'url' => 'required|max:255',
-            'description' => 'required|max:100',
+            'description' => 'required|max:255',
         ]);
         if ($validator->fails()) {
             return back()
@@ -127,6 +127,13 @@ class LinkController extends Controller
         //return $numAffected;
         
         return redirect('/links');
+    }
+    //UI redirect
+    public function startEdit(Request $request)
+    {
+        //return $request->key;
+        
+        return redirect('/edit/' . $request->key);
     }
     
 
@@ -145,12 +152,20 @@ class LinkController extends Controller
 
         return redirect('/links');
     }
+    //DELETE USING DATABASE
     public function deleteLink2(Request $request, $id)
     {
         $numDeleted = DB::delete('delete from links where id = ?', [$id]);
         //return $numDeleted;
 
         return redirect('/links');
+    }
+    //UI redirect
+    public function startDelete(Request $request)
+    {
+        //return $request->key;
+        
+        return redirect('/delete/' . $request->key);
     }
 
     //SEARCH
