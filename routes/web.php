@@ -11,13 +11,23 @@
 |
 */
 
-Route::get('/', function () {
+////////////HOME////////////
+Route::get('home', function () {
 	return view('choose');
 });
 
-Route::get('home', function () {
+Route::get('/', function () {
     return view('welcome');
 });
+
+////////////////////LOGIN////////////////////
+
+//Login
+Route::get('login', function() {
+	return view('auth.login');
+});
+
+////////////////////CRUD////////////////////
 
 //Retrieve
 Route::get('link/{id}', 'LinkController@showLink');
@@ -47,6 +57,9 @@ Route::post('/deletesubmit', 'LinkController@startDelete');
 Route::get('/delete/{id}', 'LinkController@startDeleteLink');
 Route::post('/delete/{id}', 'LinkController@deleteLink2');
 
+
+////////////////////FITUR////////////////////
+
 //Search
 Route::get('search', function () {
 	return view('fitur.searchpag');
@@ -56,6 +69,5 @@ Route::get('search/{keyword}', 'LinkController@searchPag');
 
 //Paginating
 Route::get('somelink', 'LinkController@showPaginatedLinks2');
-
 
 Auth::routes();

@@ -3,7 +3,11 @@
     <form action="/searchsubmit" method="post">
         {!! csrf_field() !!}
         Search
-        <input type="text" class="form-control" id="key" name="key" placeholder="Keywords">
+        @if (empty($links))
+            <input type="text" class="form-control" id="key" name="key" placeholder="Keywords">
+        @else
+            <input type="text" class="form-control" id="key" name="key" placeholder="Keywords" value="{{$keyword}}">
+        @endif
         <button type="submit" class="btn btn-default">Search</button>
     </form>
     Related to the Search
