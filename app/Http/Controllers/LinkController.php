@@ -183,4 +183,13 @@ class LinkController extends Controller
 
         return view('fitur.search',compact('links', 'keyword'));
     }
+
+    //PAGINATING
+    public function showPaginatedLinks()
+    {
+        $links = \App\Link::paginate(5);
+
+        return view('fitur.link',compact('links'));
+    }
+
 }
