@@ -10,6 +10,6 @@
         @yield('content')
     	<br>
 	    <br>
-	    <a href="/"> <button> Home </button> </a>
+	    <a href="/home"> <button> Home </button> </a>
     </body>
 </html>
