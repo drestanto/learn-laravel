@@ -55,7 +55,7 @@ Route::post('/searchsubmit', 'LinkController@startSearch');
 Route::get('search/{keyword}', 'LinkController@search');
 
 //Paginating
-Route::get('somelink', 'LinkController@showPaginatedLinks');
+Route::get('somelink', 'LinkController@showPaginatedLinks2');
 
 
 Auth::routes();

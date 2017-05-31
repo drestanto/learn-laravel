@@ -191,5 +191,11 @@ class LinkController extends Controller
 
         return view('fitur.link',compact('links'));
     }
+    public function showPaginatedLinks2()
+    {
+        $links = DB::table('links')->paginate(4);
+
+        return view('fitur.link',compact('links'));
+    }
 
 }
