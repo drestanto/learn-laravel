@@ -10,6 +10,12 @@
         @yield('content')
     	<br>
 	    <br>
-	    <a href="/home"> <button> Home </button> </a>
+	    <a href="/home"> <button> Home </button></a>
+	    @if (Auth::check())
+		    <a href="/logout"><button>Logout</button></a>
+		@endif
+		@if(Auth::guest())
+            <a href="/login"><button>Login</button></a>
+        @endif
     </body>
 </html>

@@ -12,12 +12,11 @@
 */
 
 ////////////HOME////////////
+Route::get('/', function () {
+    return view('choose');
+});
 Route::get('home', function () {
 	return view('choose');
-});
-
-Route::get('/', function () {
-    return view('welcome');
 });
 
 ////////////////////LOGIN////////////////////
@@ -26,6 +25,7 @@ Route::get('/', function () {
 Route::get('login', function() {
 	return view('auth.login');
 });
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 ////////////////////CRUD////////////////////
 
