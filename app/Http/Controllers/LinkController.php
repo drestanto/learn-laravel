@@ -31,14 +31,12 @@ class LinkController extends Controller
         $link = DB::table('links')->where('id',$id)->first();
         //return $link;
 
-
         return view('crud.onelink',compact('link'));
     }
     public function showAllLinks2()
     {
         $links = DB::table('links')->get();
         //return $links;
-
 
         return view('link',compact('links'));
     }
@@ -183,6 +181,15 @@ class LinkController extends Controller
 
         return view('fitur.search',compact('links', 'keyword'));
     }
+    public function searchPag($keyword)
+    {
+        //return "Hello";
+        $quer = "SELECT * FROM links WHERE title LIKE '%" . $keyword . "%' OR url like '%" . $keyword . "%' OR description like '%" . $keyword . "%'" ;
+        $links = DB::table('links')->where('title', 'like', '%' . $keyword . '%')->orWhere('url', 'like', '%' . $keyword . '%')->orWhere('description', 'like', '%' . $keyword . '%')->paginate(5);
+
+        return view('fitur.searchpag',compact('links', 'keyword'));
+    }
+
 
     //PAGINATING
     public function showPaginatedLinks()

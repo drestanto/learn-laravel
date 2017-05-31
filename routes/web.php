@@ -22,7 +22,7 @@ Route::get('home', function () {
 //Retrieve
 Route::get('link/{id}', 'LinkController@showLink');
 Route::get('links', 'LinkController@showAllLinks');
-Route::get('link2/{id}', 'LinkController@showLink');
+Route::get('link2/{id}', 'LinkController@showLink2');
 Route::get('links2', 'LinkController@showAllLinks2');
 
 //Create
@@ -49,10 +49,10 @@ Route::post('/delete/{id}', 'LinkController@deleteLink2');
 
 //Search
 Route::get('search', function () {
-	return view('fitur.search');
+	return view('fitur.searchpag');
 });
 Route::post('/searchsubmit', 'LinkController@startSearch');
-Route::get('search/{keyword}', 'LinkController@search');
+Route::get('search/{keyword}', 'LinkController@searchPag');
 
 //Paginating
 Route::get('somelink', 'LinkController@showPaginatedLinks2');

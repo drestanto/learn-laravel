@@ -30,5 +30,5 @@
     NextPageURL : {{ $links->nextPageUrl() }} <br>
     PreviousPageURL : {{ $links->previousPageUrl() }} <br>
     How many element perpage (constant) : {{ $links->perPage() }} <br>
-    Total data retrieved (onstant) : {{ $links->total() }} <br>
+    Total data retrieved (constant) : {{ $links->total() }} <br>
 @endsection
